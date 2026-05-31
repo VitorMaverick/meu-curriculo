@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Vitor Maverick Fonseca Do Santos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+            background-color: #e8e8e8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Container do currículo estilo página A4 */
+        .resume {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: grid;
+            grid-template-columns: 32% 68%;
+            border-radius: 0px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* COLUNA ESQUERDA (escura) */
+        .sidebar {
+            background-color: #1e2a3e;
+            color: #e2e8f0;
+            padding: 32px 24px;
+        }
+
+        /* Estilo para a foto */
+        .profile-photo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-photo img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #3b82f6;
+            background-color: #fff;
+        }
+
+        .profile h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .profile .title {
+            font-size: 13px;
+            color: #94a3b8;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-bottom: 28px;
+        }
+
+        .contact-info h3, .skills-section h3, .certifications-section h3 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #cbd5e1;
+            margin-bottom: 14px;
+            border-left: 3px solid #3b82f6;
+            padding-left: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            line-height: 1.4;
+            color: #cbd5e6;
+        }
+
+        .contact-icon {
+            font-weight: 700;
+            min-width: 28px;
+            color: #60a5fa;
+        }
+
+        .skills-section {
+            margin-bottom: 28px;
+        }
+
+        .skill-block {
+            margin-bottom: 16px;
+        }
+
+        .skill-block h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+        }
+
+        .skill-block p {
+            font-size: 12.5px;
+            line-height: 1.4;
+            color: #94a3b8;
+        }
+
+        .certifications-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .certifications-section li {
+            font-size: 12px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            color: #cbd5e6;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .certifications-section li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+            font-size: 10px;
+        }
+
+        /* COLUNA DIREITA (branca) */
+        .main-content {
+            background-color: white;
+            padding: 32px 28px;
+        }
+
+        .objective-section, .experience-section, .education-section {
+            margin-bottom: 28px;
+        }
+
+        .main-content h2 {
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+        }
+
+        .objective-text {
+            font-size: 13px;
+            line-height: 1.55;
+            color: #334155;
+            text-align: justify;
+        }
+
+        .experience-item {
+            margin-bottom: 22px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+
+        .exp-header h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .exp-date {
+            font-size: 12.5px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .exp-company {
+            font-size: 13px;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 8px;
+        }
+
+        .exp-list {
+            padding-left: 20px;
+            margin-top: 6px;
+        }
+
+        .exp-list li {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: #334155;
+            margin-bottom: 6px;
+            text-align: justify;
+        }
+
+        .tech-stack {
+            font-size: 11.5px;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-top: 8px;
+            display: inline-block;
+            width: auto;
+        }
+
+        .education-item {
+            margin-bottom: 10px;
+        }
+
+        .education-item h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .education-item p {
+            font-size: 12.5px;
+            color: #475569;
+        }
+
+        hr {
+            margin: 12px 0;
+            border: none;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Responsivo para impressão */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .resume {
+                max-width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .sidebar {
+                background-color: #1e2a3e !important;
+                color: #e2e8f0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .sidebar .contact-item, .sidebar .skill-block p, .sidebar .certifications-section li {
+                color: #cbd5e6 !important;
+            }
+            .tech-stack {
+                background: #f1f5f9 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="resume">
+    <!-- COLUNA ESQUERDA: Foto + Contato + Hard Skills + Certificações -->
+    <div class="sidebar">
+        <!-- Foto do rosto -->
+        <div class="profile-photo">
+            <img src="curriculo.png" alt="Vitor Maverick">
+        </div>
+
+        <div class="profile">
+            <h1>Vitor Maverick<br>Fonseca Do Santos</h1>
+            <div class="title">Java Developer | Spring Boot | AWS Cloud</div>
+        </div>
+
+        <div class="contact-info">
+            <h3>CONTATO</h3>
+            <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <span>Turu, Rua Nova 5/N, Redenção Lago Verde 1, bloco 3, apto 101<br>São Luís - MA, CEP 65000-000</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📞</span>
+                <span>+55 98 98449-8842</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">✉️</span>
+                <span>vitor.maverick@acad.ifma.edu.br</span>
+            </div>
+        </div>
+
+        <div class="skills-section">
+            <h3>HABILIDADES</h3>
+            <div class="skill-block">
+                <h4>Linguagens</h4>
+                <p>Java (SE/EE), Kotlin, Python, JavaScript, TypeScript, PHP</p>
+            </div>
+            <div class="skill-block">
+                <h4>Frameworks</h4>
+                <p>Spring Boot 1.5-3.5, React, Nuxt.js, Node.js, Express, Flutter</p>
+            </div>
+            <div class="skill-block">
+                <h4>Cloud & Infra</h4>
+                <p>AWS (EC2, RDS, Lambda, S3, Aurora, CloudWatch, SQS), Terraform, Docker, Ansible</p>
+            </div>
+            <div class="skill-block">
+                <h4>Banco de Dados</h4>
+                <p>PostgreSQL, MySQL, MongoDB, Redis (ElastiCache)</p>
+            </div>
+            <div class="skill-block">
+                <h4>Mensageria</h4>
+                <p>RabbitMQ, Apache Kafka, AWS SQS</p>
+            </div>
+            <div class="skill-block">
+                <h4>CI/CD</h4>
+                <p>Bitbucket Pipeline, Jenkins, Maven, Git</p>
+            </div>
+            <div class="skill-block">
+                <h4>Observabilidade</h4>
+                <p>New Relic, OpenSearch/Elastic Stack, Grafana, Kibana, OpenTelemetry</p>
+            </div>
+            <div class="skill-block">
+                <h4>Arquitetura</h4>
+                <p>Microservices, Hexagonal, Event-Driven, Clean Architecture, DDD, TDD</p>
+            </div>
+        </div>
+
+        <div class="certifications-section">
+            <h3>CERTIFICAÇÕES</h3>
+            <ul>
+                <li>NLW Pocket: Javascript – Full-stack Intermediate – Rocketseat (2024)</li>
+                <li>Storage: documentando suas APIs – Alura (2022)</li>
+                <li>Cloud Outsourcing: principais provedores – Alura (2022)</li>
+                <li>Docker: Criando e gerenciando containers – Alura (2022)</li>
+                <li>Ansible: Infraestrutura como código – Alura (2022)</li>
+                <li>Maven: Gerenciamento de dependências – Alura (2022)</li>
+                <li>Python para Processamento de Linguagem Natural – USP/ICMC (2021)</li>
+                <li>Design Patterns Java I e II – Alura (2021)</li>
+                <li>Java e Testes: TDD com JUnit – Alura (2021)</li>
+                <li>Python para Data Science: Numpy e Pandas – Alura (2021)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- COLUNA DIREITA: Objetivo + Experiências + Formação -->
+    <div class="main-content">
+        <div class="objective-section">
+            <h2>OBJETIVO</h2>
+            <div class="objective-text">
+                <p>Como Desenvolvedor de Software, minha trajetória se fundamenta na criação e manutenção de microsserviços para processamento de pagamentos, o que me proporcionou experiência prática com Java (SE e EE), Spring Boot e infraestrutura em nuvem. Com o suporte do meu time, trabalhamos em uma plataforma que processa milhões de transações diárias, assegurando a segurança e eficiência que os clientes esperam.</p>
+                <br>
+                <p>Minha formação em Sistemas de Informação pelo IFMA, aliada à experiência na Bemobi e às habilidades em AWS, Terraform e bancos de dados, me permite buscar inovações que elevam a experiência dos usuários. A colaboração e o foco em melhorias contínuas são o coração da minha abordagem profissional, visando entregar soluções que realmente façam a diferença.</p>
+            </div>
+        </div>
+
+        <div class="experience-section">
+            <h2>EXPERIÊNCIA PROFISSIONAL</h2>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>Desenvolvedor de Software Júnior</h3>
+                    <span class="exp-date">08/2023 - 05/2026</span>
+                </div>
+                <div class="exp-company">Bemobi – Rio de Janeiro, RJ (TIM Controle)</div>
+                <ul class="exp-list">
+                    <li>Desenvolvimento e manutenção de serviços de processamento de meios de pagamento centrados na arquitetura de microsserviços e infraestrutura em nuvem. Esta solução fornece processamento de pagamentos para milhões de transações diárias - incluindo cartão de crédito, PIX e boleto - com gestão completa do ciclo de vida de cada pagamento.</li>
+                    <li>Manutenção e evolução de ecossistema com 30+ módulos/microsserviços, incluindo sistemas legados com <strong>Java SE, Java EE (EJB 3.0, JBoss)</strong> e aplicações modernas com arquitetura hexagonal (Clean Architecture).</li>
+                    <li>Gerenciamento de infraestrutura AWS via Terraform, incluindo EC2, Lambda, RDS/Aurora, SQS, CloudWatch.</li>
+                    <li>Integração de SQS e RabbitMQ para processamento assíncrono de eventos, garantindo resiliência e baixo acoplamento entre os serviços.</li>
+                    <li>Participação em discussões de arquitetura, liderando integrações com API da operadora e serviço interno de RCS para melhoria da experiência de pagamento.</li>
+                    <li>Atuação em observabilidade (New Relic, Grafana, Kibana, OpenTelemetry), identificação de falhas e correção de bugs reportados pelo suporte.</li>
+                    <li>Contribuição em migração de infraestrutura AWS que gerou redução significativa de custos operacionais.</li>
+                </ul>
+                <div class="tech-stack">Stack: Java (SE/EE), Kotlin, Spring Boot, PostgreSQL, Kafka, RabbitMQ, AWS (EC2, Lambda, SQS, CloudWatch, RDS), Docker, Terraform, CI/CD (Bitbucket Pipeline, Jenkins)</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>Assistente de TI</h3>
+                    <span class="exp-date">12/2021 - 07/2023</span>
+                </div>
+                <div class="exp-company">Bemobi – Rio de Janeiro, RJ (TIM Controle)</div>
+                <ul class="exp-list">
+                    <li>Manutenções pontuais em microsserviços Java/Spring Boot, com ajustes em código, APIs e integrações.</li>
+                    <li>Experiência tanto com aplicações modernas quanto com <strong>sistemas legados em Java EE (EJB, JBoss)</strong>, realizando correções e evoluções incrementais.</li>
+                    <li>Investigação e correção de bugs na plataforma de recontrato (SMS, tickets, alocação de pagamento).</li>
+                    <li>Tratativa de tickets de suporte e incidentes, análise de falhas em jobs agendados e restauração de serviços.</li>
+                    <li>Troubleshooting em instâncias EC2 para verificar integridade e status operacional.</li>
+                    <li>Manutenção do pipeline de ingestão de logs com Elastic Stack (Elasticsearch, Logstash, Kibana) para observabilidade.</li>
+                    <li>Colaboração ativa em cerimônias Scrum (daily, planning, review, retrospectiva) com análises técnicas e estimativas.</li>
+                    <li>Trabalho com pagamentos via boleto, cartão e PIX – visão completa do ciclo de pagamento.</li>
+                </ul>
+                <div class="tech-stack">Stack: Java (SE/EE), Kotlin, Spring Boot, Java EE (Tomcat/JBoss), PostgreSQL, REST APIs, AWS (EC2), Elastic Stack, Scrum</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>Assistente de Suporte Técnico</h3>
+                    <span class="exp-date">11/2020 - 12/2021</span>
+                </div>
+                <div class="exp-company">Logos Serviços – São Luís, MA</div>
+                <ul class="exp-list">
+                    <li>Organização e manutenção de documentação técnica e procedimentos internos.</li>
+                    <li>Administração de contas e dispositivos corporativos (Active Directory, e-mail, VPN).</li>
+                    <li>Manutenção de hardware de servidores (discos, RAM, BIOS, placas de rede).</li>
+                    <li>Troubleshooting de sistemas operacionais (falhas de boot, desempenho, serviços).</li>
+                    <li>Testes de performance e identificação de bugs em aplicações da equipe.</li>
+                    <li>Verificação de conectividade de rede e fluxo de tráfego.</li>
+                    <li>Acompanhamento de jobs de backup e restauração de dados.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>Estagiário de TI</h3>
+                    <span class="exp-date">12/2019 - 11/2020</span>
+                </div>
+                <div class="exp-company">Logos Serviços – São Luís, MA</div>
+                <ul class="exp-list">
+                    <li>Primeira experiência profissional em TI, suporte N1/N2 a usuários internos.</li>
+                    <li>Auxílio na organização de documentação e manutenção de equipamentos.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="education-section">
+            <h2>FORMAÇÃO ACADÊMICA</h2>
+            <div class="education-item">
+                <h4>Bacharelado em Sistemas de Informação</h4>
+                <p>IFMA - Instituto Federal de Educação, Ciência e Tecnologia do Maranhão, São Luís, MA (01/2016 - 07/2020)</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
